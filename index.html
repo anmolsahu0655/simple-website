@@ -3,156 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinix - Premium Experience</title>
+    <title>Anmol Sahu - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Loading Screen with Infinix Heart Loop -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="container-loader">
-            <div class="infinix-heart">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Left heart loop -->
-                    <g class="heart-left">
-                        <path d="M 50 85 C 30 70 10 60 10 45 C 10 30 20 20 30 20 C 40 20 50 30 50 40 C 50 30 60 20 70 20 C 80 20 90 30 90 45 C 90 60 70 70 50 85 Z" 
-                              fill="none" stroke="url(#gradient1)" stroke-width="1.5"/>
-                    </g>
-                    <!-- Right heart loop -->
-                    <g class="heart-right">
-                        <path d="M 50 85 C 30 70 10 60 10 45 C 10 30 20 20 30 20 C 40 20 50 30 50 40 C 50 30 60 20 70 20 C 80 20 90 30 90 45 C 90 60 70 70 50 85 Z" 
-                              fill="none" stroke="url(#gradient2)" stroke-width="1.5"/>
-                    </g>
-                    <!-- Center glow -->
-                    <circle cx="50" cy="52" r="8" fill="none" stroke="url(#gradient1)" stroke-width="0.8" class="center-glow"/>
-                    
-                    <!-- Gradients -->
-                    <defs>
-                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ff006e;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#8338ec;stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#3a86ff;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#06ffa5;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-            
-            <!-- Floating particles -->
-            <div class="particles">
-                <span class="particle"></span>
-                <span class="particle"></span>
-                <span class="particle"></span>
-                <span class="particle"></span>
-                <span class="particle"></span>
-            </div>
-
-            <!-- Loading text -->
-            <div class="loading-text">
-                <h1 class="brand">INFINIX</h1>
-                <p class="tagline">Experience Excellence</p>
-                <div class="loader-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Showcase Image Section -->
-    <div class="showcase-section" id="showcaseSection">
-        <div class="showcase-content">
-            <div class="showcase-image">
-                <img id="mainShowcase" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff006e;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%238338ec;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%233a86ff;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23grad1)'/%3E%3Ctext x='200' y='180' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'%3EINFINIX%3C/text%3E%3Ctext x='200' y='240' font-size='24' fill='white' text-anchor='middle' font-family='Arial'%3EPremium Phone%3C/text%3E%3C/svg%3E" alt="Infinix Showcase">
-            </div>
-            <div class="showcase-text">
-                <h1 class="showcase-title">Welcome to INFINIX</h1>
-                <p class="showcase-subtitle">Experience the Power of Innovation</p>
-                <p class="showcase-description">Cutting-edge technology meets stunning design. Discover our latest collection of premium devices engineered for excellence.</p>
-                <div class="showcase-features">
-                    <div class="feature-item">
-                        <i class="fas fa-bolt"></i>
-                        <span>Lightning Fast</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-camera"></i>
-                        <span>Amazing Camera</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-battery-full"></i>
-                        <span>All Day Battery</span>
-                    </div>
-                </div>
-                <button class="cta-btn">Explore Now</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Products Section -->
-    <section class="products-section">
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="container">
-            <h2 class="section-title">Our Latest Devices</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image product-1"></div>
-                    <h3>Infinix Pro Max</h3>
-                    <p class="product-price">$299</p>
-                    <p class="product-desc">Premium flagship with 120Hz display</p>
-                    <button class="product-btn">Learn More</button>
+            <div class="logo">AS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hi, I'm Anmol Sahu</h1>
+            <p class="hero-subtitle">Full Stack Developer | Creative Problem Solver</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-card"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate developer with expertise in building modern web applications. I love turning ideas into reality through code and creating seamless user experiences.</p>
+                    <p>With a strong foundation in both frontend and backend technologies, I'm committed to continuous learning and delivering high-quality solutions.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image product-2"></div>
-                    <h3>Infinix Ultra</h3>
-                    <p class="product-price">$199</p>
-                    <p class="product-desc">Mid-range powerhouse</p>
-                    <button class="product-btn">Learn More</button>
-                </div>
-                <div class="product-card">
-                    <div class="product-image product-3"></div>
-                    <h3>Infinix Smart</h3>
-                    <p class="product-price">$99</p>
-                    <p class="product-desc">Budget-friendly excellence</p>
-                    <button class="product-btn">Learn More</button>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Projects</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Why Choose Infinix?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-microchip"></i>
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Tailwind CSS</span>
                     </div>
-                    <h3>Advanced Processor</h3>
-                    <p>Latest generation processors for seamless performance</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">REST APIs</span>
                     </div>
-                    <h3>Security First</h3>
-                    <p>Military-grade encryption to protect your data</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="skill-category">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-stack e-commerce solution with payment integration and real-time inventory management.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Beautiful Design</h3>
-                    <p>Sleek and modern aesthetics with premium materials</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headphones"></i>
+                    <h3>Task Management App</h3>
+                    <p>A responsive task management application with real-time synchronization across devices.</p>
+                    <div class="project-tech">
+                        <span>Vue.js</span>
+                        <span>Firebase</span>
+                        <span>Tailwind</span>
                     </div>
-                    <h3>Immersive Audio</h3>
-                    <p>Crystal-clear sound with advanced audio technology</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Real-time analytics dashboard with data visualization and custom reporting features.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>D3.js</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Photo Sharing Platform</h3>
+                    <p>Social photo sharing platform with image processing and community features.</p>
+                    <div class="project-tech">
+                        <span>MERN Stack</span>
+                        <span>AWS S3</span>
+                        <span>GraphQL</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Code Snippets Hub</h3>
+                    <p>A collaborative platform for sharing and discovering code snippets with syntax highlighting.</p>
+                    <div class="project-tech">
+                        <span>Next.js</span>
+                        <span>Prisma</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Social Learning Platform</h3>
+                    <p>Interactive platform for students to learn, collaborate, and share knowledge.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>WebSocket</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-subtitle">Let's create something amazing together!</p>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>anmolsahu@example.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 XXX XXX XXXX</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>India</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,11 +251,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 INFINIX. All rights reserved.</p>
+            <p>&copy; 2024 Anmol Sahu. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Support</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Sitemap</a>
             </div>
         </div>
     </footer>
