@@ -1,0 +1,643 @@
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --text-dark: #1a1a1a;
+    --text-light: #666;
+    --bg-light: #f9f9f9;
+    --bg-white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --accent-blue: #3a86ff;
+    --accent-purple: #8338ec;
+    --accent-pink: #ff006e;
+    --accent-green: #06ffa5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: var(--bg-white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    margin: 5px 0;
+    transition: 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Main Container */
+.main-container {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* Clock Header */
+.clock-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.6s ease;
+}
+
+.clock-header h1 {
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.clock-header p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+/* Local Time Section */
+.local-time-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.6s ease;
+}
+
+.local-clock {
+    background: var(--bg-white);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-hover);
+    position: relative;
+    overflow: hidden;
+    max-width: 400px;
+    width: 100%;
+}
+
+.local-clock::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+.clock-face {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+    margin: 0 auto 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 5px 15px rgba(255, 255, 255, 0.5);
+    border: 8px solid var(--bg-white);
+}
+
+.center-dot {
+    width: 15px;
+    height: 15px;
+    background: var(--text-dark);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 10px;
+    background: var(--text-dark);
+}
+
+.hour-hand {
+    width: 6px;
+    height: 60px;
+    margin-left: -3px;
+    background: linear-gradient(to top, var(--text-dark), var(--text-light));
+}
+
+.minute-hand {
+    width: 4px;
+    height: 85px;
+    margin-left: -2px;
+    background: linear-gradient(to top, var(--accent-blue), var(--primary-color));
+}
+
+.second-hand {
+    width: 2px;
+    height: 95px;
+    margin-left: -1px;
+    background: var(--accent-pink);
+    z-index: 9;
+}
+
+.number {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-12 {
+    transform: translateY(-20px);
+}
+
+.number-3 {
+    transform: rotate(90deg) translateX(20px);
+}
+
+.number-6 {
+    transform: translateY(20px);
+}
+
+.number-9 {
+    transform: rotate(-90deg) translateX(-20px);
+}
+
+.digital-display {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.time-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.date-text {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-family: 'Courier New', monospace;
+}
+
+/* Timezone Controls */
+.timezone-controls {
+    background: var(--bg-white);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.7s ease;
+}
+
+.control-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.timezone-select {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timezone-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.add-btn {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.add-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Clocks Container */
+.clocks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Clock Card */
+.clock-card {
+    background: var(--bg-white);
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    animation: scaleIn 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.clock-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.clock-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.timezone-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timezone-offset {
+    font-size: 0.85rem;
+    background: var(--bg-light);
+    color: var(--text-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
+.digital-time {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.digital-date {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1rem;
+}
+
+.small-clock {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+    margin: 1rem auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--bg-white);
+}
+
+.small-center-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--text-dark);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.small-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 2px;
+    background: var(--text-dark);
+}
+
+.small-hour-hand {
+    width: 3px;
+    height: 30px;
+    margin-left: -1.5px;
+}
+
+.small-minute-hand {
+    width: 2px;
+    height: 40px;
+    margin-left: -1px;
+    background: var(--accent-blue);
+}
+
+.small-second-hand {
+    width: 1px;
+    height: 45px;
+    margin-left: -0.5px;
+    background: var(--accent-pink);
+    z-index: 9;
+}
+
+.remove-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.remove-btn:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--border-color);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+    background: var(--text-dark);
+    color: #999;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg-white);
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1.5rem;
+        display: flex;
+        box-shadow: var(--shadow);
+    }
+
+    .clock-header h1 {
+        font-size: 2rem;
+    }
+
+    .clock-face {
+        width: 180px;
+        height: 180px;
+    }
+
+    .time-text {
+        font-size: 2rem;
+    }
+
+    .control-group {
+        flex-direction: column;
+    }
+
+    .timezone-select {
+        width: 100%;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .clocks-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .clock-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .clock-header p {
+        font-size: 1rem;
+    }
+
+    .clock-face {
+        width: 150px;
+        height: 150px;
+    }
+
+    .time-text {
+        font-size: 1.5rem;
+    }
+
+    .digital-time {
+        font-size: 1.5rem;
+    }
+
+    .timezone-name {
+        font-size: 1rem;
+    }
+}

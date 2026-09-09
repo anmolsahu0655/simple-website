@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock - World Time Zones</title>
+    <link rel="stylesheet" href="clock-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-clock"></i> World Clock
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="clock.html" class="active">Clock</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <div class="clock-header">
+            <h1>World Clock</h1>
+            <p>Real-time displays across multiple time zones</p>
+        </div>
+
+        <!-- Local Time Display -->
+        <div class="local-time-section">
+            <div class="local-clock">
+                <div class="clock-face">
+                    <div class="center-dot"></div>
+                    <div class="hand hour-hand"></div>
+                    <div class="hand minute-hand"></div>
+                    <div class="hand second-hand"></div>
+                    <div class="number number-12">12</div>
+                    <div class="number number-3">3</div>
+                    <div class="number number-6">6</div>
+                    <div class="number number-9">9</div>
+                </div>
+                <div class="digital-display">
+                    <div id="localTime" class="time-text">00:00:00</div>
+                    <div id="localDate" class="date-text">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timezone Selector -->
+        <div class="timezone-controls">
+            <div class="control-group">
+                <label for="tzSelect">Add Timezone:</label>
+                <select id="tzSelect" class="timezone-select">
+                    <option value="">Select a timezone...</option>
+                </select>
+                <button id="addBtn" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+            </div>
+        </div>
+
+        <!-- Clocks Grid -->
+        <div class="clocks-container" id="clocksContainer">
+            <!-- Clocks will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 World Clock. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="clock-script.js"></script>
+</body>
+</html>
