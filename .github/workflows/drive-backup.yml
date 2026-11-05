@@ -1,0 +1,87 @@
+
+name: Website Google Drive Backup
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Create website ZIP
+        run: |
+          FILE="website-backup-${GITHUB_SHA}.zip"
+
+          python3 - "$FILE" <<'PY'
+          import os, sys, zipfile
+          from pathlib import Path
+
+          output = sys.argv[1]
+
+          with zipfile.ZipFile(output, "w",
+                               zipfile.ZIP_DEFLATED) as z:
+              files = os.popen("git ls-files -z").buffer.read()
+              for name in files.decode().split("\0"):
+                  if not name:
+                      continue
+
+                  p = Path(name)
+
+                  if any(x in {".git", ".vercel", "node_modules"}
+                         for x in p.parts):
+                      continue
+
+                  if (p.name == ".env" or
+                      (p.name.startswith(".env.") and
+                       p.name not in {".env.example", ".env.sample"})):
+                      continue
+
+                  if p.suffix in {".pem", ".key"}:
+                      continue
+
+                  if p.is_file():
+                      z.write(p, name)
+          PY
+
+          echo "BACKUP_FILE=$FILE" >> "$GITHUB_ENV"
+
+      - name: Upload to Google Drive
+        env:
+          DRIVE_WEB_APP_URL: ${{ secrets.DRIVE_WEB_APP_URL }}
+          DRIVE_BACKUP_TOKEN: ${{ secrets.DRIVE_BACKUP_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os
+
+          filename = os.environ["BACKUP_FILE"]
+
+          with open(filename, "rb") as f:
+              encoded = base64.b64encode(f.read()).decode("ascii")
+
+          payload = {
+              "token": os.environ["DRIVE_BACKUP_TOKEN"],
+              "filename": filename,
+              "fileBase64": encoded
+          }
+
+          with open("payload.json", "w") as f:
+              json.dump(payload, f)
+          PY
+
+          curl -fsSL \
+            -H "Content-Type: application/json" \
+            --data-binary @payload.json \
+            "$DRIVE_WEB_APP_URL" \
+            -o response.json
+
+          python3 -c "import json; d=json.load(open('response.json')); assert d.get('ok'), d; print('Backup successful:', d.get('name'))"
